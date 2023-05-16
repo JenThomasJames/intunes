@@ -1,5 +1,4 @@
 import Logo from "../assets/logo.svg";
-import Button from "./Button";
 
 const Navbar = () => {
   return (
