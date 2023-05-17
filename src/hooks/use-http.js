@@ -24,6 +24,6 @@ const useHttp = () => {
     }
   };
 
-  return { isLoading, error, fireRequest };
+  return { isLoading, error, fireRequest, setError };
 };
 export default useHttp;
