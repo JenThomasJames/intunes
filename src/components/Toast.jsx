@@ -2,17 +2,25 @@ import { useEffect, useState } from "react";
 import { MdCancel } from "react-icons/md";
 import Button from "./Button";
 
-const Toast = ({ variant = "error", title, children }) => {
+const Toast = ({ variant = "error", title, children, updateError }) => {
   const [showToast, setShowToast] = useState(true);
   useEffect(() => {
     const timerId = setTimeout(() => {
+      updateError({
+        isError: false,
+        error: null,
+      });
       setShowToast(false);
     }, 5000);
     return () => {
       clearTimeout(timerId);
     };
-  }, []);
+  }, [updateError]);
   const closeHandler = () => {
+    updateError({
+      isError: false,
+      error: null,
+    });
     setShowToast(false);
   };
   if (showToast) {
