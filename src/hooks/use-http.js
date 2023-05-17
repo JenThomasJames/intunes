@@ -15,10 +15,18 @@ const useHttp = () => {
       });
       return response.data;
     } catch (error) {
-      setError({
-        isError: true,
-        error,
-      });
+      console.log(error.response.data.message);
+      if (error.response.status === 500) {
+        setError({
+          isError: true,
+          error: "The server went on a coffee break. Will be back soon!",
+        });
+      } else {
+        setError({
+          isError: true,
+          error: error.response.data.message,
+        });
+      }
     } finally {
       setIsLoading(false);
     }
