@@ -3,6 +3,7 @@ import useHttp from "../hooks/use-http";
 import Button from "./Button";
 import Spinner from "./Spinner";
 import Toast from "./Toast";
+import VideoMeta from "./VideoMeta";
 
 const Downloader = () => {
   const [videoLink, setVideoLink] = useState("");
@@ -75,6 +76,7 @@ const Downloader = () => {
             className="py-3 text-xs sm:text-sm md:text-md flex-1 rounded text-center"
             type="text"
             name="link"
+            autoComplete="off"
             id="link"
             placeholder="Paste a YouTube Video Link"
             onChange={videoLinkChangeHandler}
@@ -83,6 +85,7 @@ const Downloader = () => {
             Validate Video
           </Button>
         </form>
+        {videoMeta.videoId && <VideoMeta data={videoMeta} />}
       </div>
     </>
   );
